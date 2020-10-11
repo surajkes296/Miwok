@@ -19,24 +19,22 @@
         android:id="@+id/family"
         style="@style/CategoryStyle"
         android:background="@color/category_family"
-        android:text="@string/category_family"
-        android:onClick="openFamilyActivity"
-        />
+        android:text="@string/category_family"/>
+<!--        android:onClick="openFamilyActivity"-->
 
     <TextView
         android:id="@+id/colors"
         style="@style/CategoryStyle"
         android:background="@color/category_colors"
-        android:text="@string/category_colors"
-        android:onClick="openColorssActivity"
-        />
+        android:text="@string/category_colors"/>
+<!--        android:onClick="openColorssActivity"-->
+
 
     <TextView
         android:id="@+id/phrases"
         style="@style/CategoryStyle"
         android:background="@color/category_phrases"
-        android:text="@string/category_phrases"
-        android:onClick="openPhrasesActivity"
-        />
+        android:text="@string/category_phrases"/>
+<!--        android:onClick="openPhrasesActivity"-->
 
 </LinearLayout>
