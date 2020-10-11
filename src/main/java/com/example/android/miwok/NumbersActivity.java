@@ -3,6 +3,7 @@ package com.example.android.miwok;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+
 import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
@@ -44,8 +45,10 @@ public class NumbersActivity extends AppCompatActivity {
         // 1 argument, which is the {@link ArrayAdapter} with the variable name itemsAdapter.
         listView.setAdapter(itemsAdapter);
 
-        /*LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
+        /*Using default arrayadapter
+        ArrayAdapter<String> adp=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,words);*/
 
+        /*LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
         // Create a variable to keep track of the current index position
         int index = 0;
 
