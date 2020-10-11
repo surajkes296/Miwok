@@ -15,16 +15,16 @@ public class NumbersActivity extends AppCompatActivity {
 
         // Create a list of words
         ArrayList<Word> words = new ArrayList<Word>();
-        words.add(new Word("one","lutti"));
-        words.add(new Word("two","otiiko"));
-        words.add(new Word("three","tolookosu"));
-        words.add(new Word("four","oyyisa"));
-        words.add(new Word("five","masooka"));
-        words.add(new Word("six","temokka"));
-        words.add(new Word("seven","kenekaku"));
-        words.add(new Word("eight","kawinta"));
-        words.add(new Word("nine","wo'e"));
-        words.add(new Word("ten","na'aaacha"));
+        words.add(new Word("one","lutti",R.drawable.number_one));
+        words.add(new Word("two","otiiko",R.drawable.number_two));
+        words.add(new Word("three","tolookosu",R.drawable.number_three));
+        words.add(new Word("four","oyyisa",R.drawable.number_four));
+        words.add(new Word("five","masooka",R.drawable.number_five));
+        words.add(new Word("six","temokka",R.drawable.number_six));
+        words.add(new Word("seven","kenekaku",R.drawable.number_seven));
+        words.add(new Word("eight","kawinta",R.drawable.number_eight));
+        words.add(new Word("nine","wo'e",R.drawable.number_nine));
+        words.add(new Word("ten","na'aaacha",R.drawable.number_ten));
 
         // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
         // adapter knows how to create layouts for each item in the list, using the
@@ -32,7 +32,7 @@ public class NumbersActivity extends AppCompatActivity {
         // This list item layout contains a single {@link TextView}, which the adapter will set to
         // display a single word.
         WordAdapter itemsAdapter =
-                new WordAdapter(this, words);
+                new WordAdapter(this, words,R.color.category_numbers);
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
