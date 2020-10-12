@@ -11,6 +11,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class FamilyMembersActivity extends AppCompatActivity {
+        MediaPlayer.OnCompletionListener mCompleteListner=new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                Toast.makeText(FamilyMembersActivity.this,"Pronunciation is over",Toast.LENGTH_SHORT).show();
+                releaseMediaPlayer();
+            }
+        };
         static MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,14 +60,10 @@ public class FamilyMembersActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word wObject = words.get(position);
+                releaseMediaPlayer();
                 player = MediaPlayer.create(FamilyMembersActivity.this, wObject.getAudioResourceId());
                 player.start();
-                player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        Toast.makeText(FamilyMembersActivity.this,"Pronunciation is over",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                player.setOnCompletionListener(mCompleteListner);
                 /* write you handling code like...
                   String st = "sdcard/";
                   File f = new File(st+o.toString());
@@ -88,6 +91,17 @@ public class FamilyMembersActivity extends AppCompatActivity {
             // Increment the index variable by 1
             index++;
         }*/
+    }
+    void releaseMediaPlayer(){
+        if(player!=null){
+            player.release();
+            player=null;
+        }
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        releaseMediaPlayer();
     }
 }
 

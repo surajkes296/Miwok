@@ -12,6 +12,13 @@ import java.util.ArrayList;
 
 public class ColorsActivity extends AppCompatActivity {
     static MediaPlayer player;
+    MediaPlayer.OnCompletionListener mCompleteListner=new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            Toast.makeText(ColorsActivity.this,"Pronunciation is over",Toast.LENGTH_SHORT).show();
+            releaseMediaPlayer();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +59,10 @@ public class ColorsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word wObject = words.get(position);
+                releaseMediaPlayer();
                 player = MediaPlayer.create(ColorsActivity.this, wObject.getAudioResourceId());
                 player.start();
-                player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        Toast.makeText(ColorsActivity.this,"Pronunciation is over",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                player.setOnCompletionListener(mCompleteListner);
                 /* write you handling code like...
                   String st = "sdcard/";
                   File f = new File(st+o.toString());
@@ -87,5 +90,16 @@ public class ColorsActivity extends AppCompatActivity {
             // Increment the index variable by 1
             index++;
         }*/
+    }
+    void releaseMediaPlayer(){
+        if(player!=null){
+            player.release();
+            player=null;
+        }
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        releaseMediaPlayer();
     }
 }
